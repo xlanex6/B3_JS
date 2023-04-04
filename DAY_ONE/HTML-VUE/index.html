@@ -12,7 +12,13 @@
 
     <div id="app">
 
-      {{message}}
+      {{message}} - {{salutation}}
+
+      <ul>
+        <li v-for="user in users"> {{user.name}} - {{user.age}}</li>
+      </ul>
+
+      <button @click="incrementAge">Une annee en plus</button>
 
     </div>
 
@@ -29,7 +35,22 @@
       createApp({
         data() {
           return {
-            message: "Salut les B1"
+            message: "Salut les B1",
+            salutation: "coucou",
+            counter: 0,
+            users: [
+              {name: 'alex', age: 39},
+              {name: 'flo', age: 24},
+              {name: 'affo', age: 24}
+            ]
+          }
+        },
+        methods: {
+          incrementAge() {
+            // les users, pour chaque user , user.age++
+            this.users.forEach(user => {
+              user.age++
+            });
           }
         }
       }).mount('#app')
