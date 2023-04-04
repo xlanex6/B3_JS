@@ -5,7 +5,7 @@ export default {
   data() {
     return {
       showFamily: false,
-      names: [
+      childrens: [
         {name: 'alex',age: 38},
         {name: 'luca',age: 23},
         {name: 'affo',age: 24},
@@ -29,9 +29,9 @@ export default {
     <button @click="toogleShowFamily">{{ showFamily ? 'Hide' : 'Show' }} family</button>
 
     <div v-if="showFamily" id="list">
-      <Child v-for="name in names">        
-        {{ name }}     
-      </Child> 
+
+      <Child v-for="child in childrens" :machin="child"/>        
+          
     </div>
 
   </div>

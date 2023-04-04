@@ -1,18 +1,15 @@
-<!-- <script>
+<script>
 export default {
-  data() {
-    return {
-    }
-  }
+  props: ['machin']
 }
-</script> -->
+</script>
 
 <template>
   <div class="child">
   <!-- tu comble le vide par le text entre les balises   avec <slot/>    -->
-    NAME
+    {{ machin.name }}
 
-    <div class="age">12</div>
+    <div class="age">{{ machin.age }}</div>
 
   </div>
 </template>
@@ -39,6 +36,7 @@ export default {
   width: 25px;
   background-color:red;
   border-radius: 50%;
+  color: white;
 }
 
 h3 {
