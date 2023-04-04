@@ -1,0 +1,5 @@
+.center {
+  display: grid;
+  min-height: 10vh;
+  place-content: center;
+}
