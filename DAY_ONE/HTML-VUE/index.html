@@ -31,6 +31,18 @@
 
       <input type="text" placeholder="name" v-model="name"> {{ sanitizedName }}
 
+
+
+      <div v-if="display">AFFICHE</div>
+      <div v-else>NE PAS AFFICHER</div>
+
+      <button @click="display = !display">
+        <!-- SHOW || HIDE -->
+        {{ display ? 'HIDE' : 'SHOW' }}
+      </button>
+
+
+
     </div>
 
 
@@ -45,6 +57,7 @@
             salutation: "coucou",
             counter: 0,
             date: '',
+            display: true,
             name: '',
             users: [
               {name: 'alex', age: 39},
