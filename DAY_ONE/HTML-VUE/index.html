@@ -8,6 +8,7 @@
 </head>
 <body>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 
 
     <div id="app">
@@ -18,7 +19,17 @@
         <li v-for="user in users"> {{user.name}} - {{user.age}}</li>
       </ul>
 
+      <h1>{{doubleCounter}} - {{counter}}</h1>
+
       <button @click="incrementAge">Une annee en plus</button>
+
+      <button @click="counter++">counter plus</button>
+
+      <button @click="showDate">Afficher la date</button>
+
+      <p>{{date}}</p>
+
+      <input type="text" placeholder="name" v-model="name"> {{ sanitizedName }}
 
     </div>
 
@@ -27,17 +38,14 @@
       const createApp = Vue.createApp
       // IDEM en ESNext => const { createApp } = Vue
 
-      // {
-      //   key: 'value',
-      //   fn(): 'value'
-      // }
-
       createApp({
         data() {
           return {
             message: "Salut les B1",
             salutation: "coucou",
             counter: 0,
+            date: '',
+            name: '',
             users: [
               {name: 'alex', age: 39},
               {name: 'flo', age: 24},
@@ -51,7 +59,18 @@
             this.users.forEach(user => {
               user.age++
             });
+          },
+          showDate() {
+            this.date = dayjs().format('DD MMMM YY')
           }
+        },
+        computed: {
+          doubleCounter() {
+            return this.counter*2
+          },
+          sanitizedName() {
+            return this.name.toLowerCase()
+          },
         }
       }).mount('#app')
 
