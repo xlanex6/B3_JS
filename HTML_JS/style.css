@@ -2,4 +2,7 @@
   display: grid;
   min-height: 10vh;
   place-content: center;
+  border: solid 1px lightgrey;
+  margin-bottom: 5px;
+  padding: 1px;
 }
