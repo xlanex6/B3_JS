@@ -15,6 +15,9 @@
 
       {{message}} - {{salutation}}
 
+
+      <img :src="imageUrl" alt="on text">
+
       <ul>
         <li v-for="user in users"> {{user.name}} - {{user.age}}</li>
       </ul>
@@ -23,13 +26,13 @@
 
       <button @click="incrementAge">Une annee en plus</button>
 
-      <button @click="counter++">counter plus</button>
+      <button v-on:click="counter++">counter plus</button>
 
       <button @click="showDate">Afficher la date</button>
 
       <p>{{date}}</p>
 
-      <input type="text" placeholder="name" v-model="name"> {{ sanitizedName }}
+      <input type="text" placeholder="name" v-model="name" @keyup.enter="showAlert" > {{ sanitizedName }}
 
 
 
@@ -57,7 +60,8 @@
             salutation: "coucou",
             counter: 0,
             date: '',
-            display: true,
+            imageUrl: 'https://picsum.photos/200/100'
+,            display: true,
             name: '',
             users: [
               {name: 'alex', age: 39},
@@ -75,6 +79,9 @@
           },
           showDate() {
             this.date = dayjs().format('DD MMMM YY')
+          },
+          showAlert(){
+            alert('CHAUD CHAUD')
           }
         },
         computed: {
