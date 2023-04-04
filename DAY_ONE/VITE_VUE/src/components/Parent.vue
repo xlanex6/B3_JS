@@ -5,7 +5,13 @@ export default {
   data() {
     return {
       showFamily: false,
-      names: ['alx', 'luca', 'amine', 'amaury' ,'affo']
+      names: [
+        {name: 'alex',age: 38},
+        {name: 'luca',age: 23},
+        {name: 'affo',age: 24},
+        {name: 'amaury',age: 20},
+        {name: 'amine',age: 23},
+      ]
     }
   },
   methods: {
@@ -39,6 +45,7 @@ export default {
     margin: auto;
   }
   #list {
+    margin-top: 20px;
     display: flex;
     justify-content: space-evenly;
   }
