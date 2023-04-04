@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       showFamily: false,
+      favorite: null,
       childrens: [
         {name: 'alex',age: 38},
         {name: 'luca',age: 23},
@@ -17,6 +18,17 @@ export default {
   methods: {
     toogleShowFamily() {
       this.showFamily = !this.showFamily
+    },
+    setChildAsFavorite(favoriteChildName) {
+      this.favorite = favoriteChildName
+    },
+    killChild(index) {
+      // si index child === favorite => favorite => null
+      const {name} = this.childrens[index]
+      if (name === this.favorite) {
+        this.favorite = null
+      }
+      this.childrens.splice(index,1)
     }
   }
 } 
@@ -28,12 +40,18 @@ export default {
 
     <button @click="toogleShowFamily">{{ showFamily ? 'Hide' : 'Show' }} family</button>
 
-    <div v-if="showFamily" id="list">
+    <div v-show="showFamily" id="list">
 
-      <Child v-for="child in childrens" :machin="child"/>        
-          
+      <Child v-for="(child, index) in childrens" 
+      :machin="child"
+      :index="index"
+      v-on:favoriteChild="setChildAsFavorite"
+      @kill="killChild"
+      />      
+      
+      
     </div>
-
+    <h3>Favorite : {{ favorite }}</h3>
   </div>
 </template>
 
