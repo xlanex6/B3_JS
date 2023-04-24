@@ -1,22 +1,27 @@
 <script>
 import Navbar from './components/Navbar.vue';
+import UserCard from './components/UserCard.vue';
 
 export default {
     data() {
         return {
             name: "",
-            showNavBar: false
+          showNavBar: false,
+          users: []
         };
     },
-  components: { Navbar },
+  components: { Navbar, UserCard },
   methods: {
+    loadApp() {
+      this.showNavBar = true
+      this.fetchUsers()
+    },
     async fetchUsers() {
       const res = await fetch('https://jsonplaceholder.typicode.com/users')
       this.users = await res.json()
-      debugger
-      }
     }
-}
+      }
+  }
 </script>
 
 <template>
@@ -24,9 +29,15 @@ export default {
   
   <div v-else="!showNavBar" class="grid min-h-screen place-content-center">
     <input type="text" v-model="name" class="text-center uppercase border rounded-md border-neutral-200" placeholder="name">
-    <button @click="" class="w-full my-3 text-white bg-purple-500 rounded shadow-sm">SAVE</button>
+    <button @click="loadApp" class="w-full my-3 text-white bg-purple-500 rounded shadow-sm">SAVE</button>
   </div>
-  
+
+  <div class="grid grid-cols-4 gap-4">
+
+    <UserCard v-for="user in users" :user="user"/>
+
+    
+  </div>
 </template>
 
 <style scoped>
