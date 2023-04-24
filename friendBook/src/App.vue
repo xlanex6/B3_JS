@@ -25,6 +25,8 @@ export default {
       const alreadyFavorite = this.favorite.includes(userId)
       if (!alreadyFavorite) {
         this.favorite.push(userId)
+      } else {
+        this.favorite = this.favorite.filter((id) => id !== userId)
       }
     }
       }
@@ -41,7 +43,9 @@ export default {
 
   <div class="grid grid-cols-4 gap-4 m-2">
 
-    <UserCard v-for="user in users" :user="user"
+    <UserCard v-for="user in users" 
+      :user="user"
+      :isFavorite="favorite.includes(user.id)"
       @favoriteUser="setUserAsFavorite"
     />
 
