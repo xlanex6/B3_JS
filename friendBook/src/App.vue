@@ -1,6 +1,7 @@
 <script>
 import Navbar from './components/Navbar.vue';
 import UserCard from './components/UserCard.vue';
+import SearchBar from './components/SearchBar.vue';
 
 export default {
     data() {
@@ -10,9 +11,10 @@ export default {
           showNavBar: false,
           users: [],
           favorite: [],
+          searchQuery: ''
         };
-    },
-  components: { Navbar, UserCard },
+  },
+  components: { Navbar, UserCard, SearchBar },
   methods: {
     loadApp() {
       this.showNavBar = true
@@ -43,6 +45,19 @@ export default {
   computed: {
     favoriteLimit() {
       return this.age >= 18 ? 5 : 2
+    },
+    filteredUsers() {
+      // return this.users.filter((user) => 
+      //    user.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      // )
+      if (!this.searchQuery) {
+        return this.users
+      } else {
+        // moteur de recheche du pauvre
+        return this.users.filter((user) => 
+           user.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+        )
+      }
     }
   }
   }
@@ -58,10 +73,13 @@ export default {
     <button @click="loadApp" class="w-full my-3 text-white bg-purple-500 rounded shadow-sm">SAVE</button>
   </div>
 
-  <input type="text" placeholder="recherche" class="w-1/2 px-2 mx-4 my-6 border rounded-md border-neutral-200">
+  <SearchBar 
+  :modelValue="searchQuery"
+  @update:modelValue="newValue => searchQuery = newValue"
+  />
 
   <div class="grid grid-cols-4 gap-4 m-2">
-    <UserCard v-for="user in users" 
+    <UserCard v-for="user in filteredUsers" 
       :user="user"
       :isFavorite="favorite.includes(user.id)"
       @favoriteUser="setUserAsFavorite"
