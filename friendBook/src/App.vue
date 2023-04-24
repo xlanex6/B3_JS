@@ -2,6 +2,7 @@
 import Navbar from './components/Navbar.vue';
 import UserCard from './components/UserCard.vue';
 import SearchBar from './components/SearchBar.vue';
+import Btn from './components/Btn.vue';
 
 export default {
     data() {
@@ -14,7 +15,7 @@ export default {
           searchQuery: ''
         };
   },
-  components: { Navbar, UserCard, SearchBar },
+  components: { Navbar, UserCard, SearchBar, Btn },
   methods: {
     loadApp() {
       this.showNavBar = true
@@ -73,10 +74,16 @@ export default {
     <button @click="loadApp" class="w-full my-3 text-white bg-purple-500 rounded shadow-sm">SAVE</button>
   </div>
 
-  <SearchBar 
-  :modelValue="searchQuery"
-  @update:modelValue="newValue => searchQuery = newValue"
-  />
+  <div class="flex items-center">
+
+    <SearchBar 
+    :modelValue="searchQuery"
+    @update:modelValue="newValue => searchQuery = newValue"
+    />
+    <Btn size="XL">  
+     Action
+    </Btn>
+  </div>
 
   <div class="grid grid-cols-4 gap-4 m-2">
     <UserCard v-for="user in filteredUsers" 
