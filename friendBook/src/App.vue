@@ -23,10 +23,20 @@ export default {
     },
     setUserAsFavorite(userId) {
       const alreadyFavorite = this.favorite.includes(userId)
-      if (!alreadyFavorite) {
-        this.favorite.push(userId)
-      } else {
+
+      // user Id est deja favoris
+      if (alreadyFavorite) {
         this.favorite = this.favorite.filter((id) => id !== userId)
+        return
+      }
+
+      if (this.favorite.length < 3 && !alreadyFavorite) {
+        this.favorite.push(userId)
+      }
+      //  si favorite plus de 3
+      else {
+        this.favorite.shift()
+        this.favorite.push(userId)
       }
     }
       }
@@ -54,4 +64,3 @@ export default {
 
 <style scoped>
 </style>
- l
