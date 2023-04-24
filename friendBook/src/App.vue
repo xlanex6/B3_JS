@@ -6,9 +6,10 @@ export default {
     data() {
         return {
           name: "",
+          age: null,
           showNavBar: false,
           users: [],
-          favorite: []
+          favorite: [],
         };
     },
   components: { Navbar, UserCard },
@@ -22,15 +23,14 @@ export default {
       this.users = await res.json()
     },
     setUserAsFavorite(userId) {
-      const alreadyFavorite = this.favorite.includes(userId)
-
+      const alreadyFavorite = this.favorite.includes(userId) 
       // user Id est deja favoris
       if (alreadyFavorite) {
         this.favorite = this.favorite.filter((id) => id !== userId)
         return
       }
-
-      if (this.favorite.length < 3 && !alreadyFavorite) {
+      //  MAJEUR FAV COUNTER == 5 SINON 3 
+      if (this.favorite.length < this.favoriteLimit && !alreadyFavorite) {
         this.favorite.push(userId)
       }
       //  si favorite plus de 3
@@ -39,26 +39,33 @@ export default {
         this.favorite.push(userId)
       }
     }
-      }
+  },
+  computed: {
+    favoriteLimit() {
+      return this.age >= 18 ? 5 : 2
+    }
+  }
   }
 </script>
 
 <template>
   <Navbar v-if="showNavBar" :name="name" :favoriteCounter="favorite.length"/>
 
-  <div v-else="!showNavBar" class="grid min-h-screen place-content-center">
+  <div v-else="!showNavBar" class="grid min-h-screen gap-2 place-content-center">
+    <input type="text" v-model.number="age" class="text-center uppercase border rounded-md border-neutral-200" placeholder="age">
     <input type="text" v-model="name" class="text-center uppercase border rounded-md border-neutral-200" placeholder="name" @keyup.enter="loadApp">
+
     <button @click="loadApp" class="w-full my-3 text-white bg-purple-500 rounded shadow-sm">SAVE</button>
   </div>
 
-  <div class="grid grid-cols-4 gap-4 m-2">
+  <input type="text" placeholder="recherche" class="w-1/2 px-2 mx-4 my-6 border rounded-md border-neutral-200">
 
+  <div class="grid grid-cols-4 gap-4 m-2">
     <UserCard v-for="user in users" 
       :user="user"
       :isFavorite="favorite.includes(user.id)"
       @favoriteUser="setUserAsFavorite"
     />
-
   </div>
 </template>
 
