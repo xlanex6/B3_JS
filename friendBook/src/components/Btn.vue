@@ -1,12 +1,16 @@
 <template>
-  <button class="px-4 py-1 bg-gray-100 hover:bg-slate-200" :style="sizeStyle">
+  <button class="px-4 py-1" 
+  
+  :class="{'bg-red-500': warning, 'bg-green-500': success}"
+  
+  >
     <slot/>  
     <!-- text ecrit depuis le parent -->
   </button>
 </template>
 
 <script>
-import { computed } from '@vue/reactivity';
+// import { computed } from '@vue/reactivity';
 
 export default {
   props: {
@@ -16,6 +20,12 @@ export default {
         return ['S','M','XL'].includes(value)
       },
       default: 'M'
+    },
+    warning: {
+      type: Boolean,
+    },
+    success: {
+      type: Boolean,
     }
   },
   computed: {

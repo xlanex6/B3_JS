@@ -80,7 +80,10 @@ export default {
     :modelValue="searchQuery"
     @update:modelValue="newValue => searchQuery = newValue"
     />
-    <Btn size="XL">  
+    <Btn size="XL" :success="true" warning
+    
+    
+    >  
      Action
     </Btn>
   </div>
