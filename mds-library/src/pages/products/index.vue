@@ -5,8 +5,18 @@
 
       <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
 
+  <svg v-if="loading" class="h-12 w-12 text-center" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M1 4h6v14H1z">
+      <animate id="b" fill="freeze" attributeName="opacity" begin="0;a.end-0.25s" dur="0.75s" values="1;.2"/>
+    </path>
+    <path fill="currentColor" opacity=".4" d="M9 4h6v14H9z">
+      <animate fill="freeze" attributeName="opacity" begin="b.begin+0.15s" dur="0.75s" values="1;.2"/>
+    </path>
+    <path fill="currentColor" opacity=".3" d="M17 4h6v14h-6z">
+      <animate id="a" fill="freeze" attributeName="opacity" begin="b.begin+0.3s" dur="0.75s" values="1;.2"/>
+    </path>
+  </svg>
 
-        <h1 class="text-6xl" v-if="loading"> LOADING .....</h1>
 
         <ProductCard v-else v-for="product in products" :product="product" :key="product.id" />
          
@@ -32,13 +42,21 @@ export default {
     // const { products } = await productsData.json()
     // this.products = products
   },
-  async mounted() {
-    this.loading = true
+  methods: {
+    async fetchProducts() {
+      const productsData = await fetch('https://dummyjson.com/products')
+      const { products } = await productsData.json()
+      this.products = products
+      this.loading = false
+    }
+  },
+  mounted() {
+      this.loading = true
 
-    const productsData = await fetch('https://dummyjson.com/products')
-    const {products} = await productsData.json()
-    this.products = products
-    this.loading = false
+    setTimeout(() => {
+      this.fetchProducts()
+    }, 1000);
+
   }
 }
 </script>

@@ -1,4 +1,5 @@
 <script >
+import { onMounted } from 'vue';
 import ProductHeader from '../../components/ProductHeader.vue';
 
 export default {
@@ -8,7 +9,9 @@ export default {
       product:{}
     }
   },
-    async created() {
+  async created() {
+          console.log('beforeUpdate')
+
     const response = await fetch(`https://dummyjson.com/products/${this.$route.params.productId}`)
     this.product = await response.json()
   }
