@@ -24,3 +24,13 @@ export default {
 
 <style scoped>
 </style>
+
+
+<!-- https://dummyjson.com/products/search?q=phone -->
+<!-- TO DO  -->
+<!-- 
+
+  LOAD data from server 
+  when you arrive on this page 
+  display info form server on template page 
+ -->
