@@ -5,7 +5,7 @@
     </h1>
     <p>{{ sportData.baseline }}</p>
 
-    <a :href="sportData.link" class="bg-red-500 px-4 py-2 rounded-md mt-2">
+    <a :href="sportData.link" class="bg-green-500 px-4 py-2 rounded-md mt-2">
       <slot name="cta">
         Réserver
       </slot>

@@ -6,7 +6,7 @@ export default {
   data() {
     return {
       resServer: {
-        image: "https://picsum.photos/1000/300.jpg", baseline: "Venez faire du kayak sur Annecy", title: "index",
+        image: "https://picsum.photos/1000/300.jpg", baseline: "Viens c'est cool", title: "index",
         link: "http://www.google.com",
       }
     }

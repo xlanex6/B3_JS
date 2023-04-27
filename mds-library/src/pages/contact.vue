@@ -16,11 +16,7 @@ export default {
 </script>
 
 <template>
-  <Header :sportData="resServer">
-      <template #cta>
-        Réserver avec ALEX 🗓️
-      </template>  
-  </Header>
+  <h1>CONTACT</h1>
 </template>
 
 <style scoped>

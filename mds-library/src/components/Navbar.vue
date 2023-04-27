@@ -1,21 +1,22 @@
 <template>
-<div class="flex justify-center space-x-6 bg-gray-300 h-12 items-center">
+  <div class="flex justify-center space-x-6 bg-gray-300 h-12 items-center">
 
-  <router-link :to="item.link" v-for="item in menu" :key="item.name"
-  >{{ item.name }}</router-link>
-  
-</div>
+    <router-link :to="path" :key="path" v-for="{ path, displayName } in navbarLinkOnly">{{ displayName }}</router-link>
+
+  </div>
 </template>
 <script>
+import { routes } from '../routes'
+
 export default {
   data() {
     return {
-      menu: [
-        { name: 'Index', link: '/'},
-        { name: 'Boxe', link: '/boxe'},
-        { name: 'Kayak', link: '/kayak'},
-        { name: 'Machin', link: '/machin'},
-      ]
+      routes
+    }
+  },
+  computed: {
+    navbarLinkOnly() {
+      return this.routes.filter((route) => route.navbarVisible)
     }
   }
 }
