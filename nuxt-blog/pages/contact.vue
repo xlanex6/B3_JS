@@ -1,7 +1,5 @@
 <template>
   <div>
-    <Navbar/>
-
-    contact
+    page contact
   </div>
 </template>
