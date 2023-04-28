@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="bg-deg">
     Home
+    <Icon name="material-symbols:remove-shopping-cart-outline-rounded" size="40"/>
   </div>
 </template>
 
