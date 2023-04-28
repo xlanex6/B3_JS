@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center space-x-6 bg-gray-300 h-12 items-center">
+  <div class="flex items-center justify-center h-12 space-x-6 bg-gray-300">
 
     <router-link :to="path" :key="path" v-for="{ path, displayName } in navbarLinkOnly">{{ displayName }}</router-link>
 
@@ -8,7 +8,7 @@
 <script>
 import { routes } from '../routes'
 
-export default {
+export default{
   data() {
     return {
       routes
