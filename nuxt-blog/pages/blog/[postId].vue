@@ -1,8 +1,10 @@
 <template>
-  <div>
-    single post page :{{ $route.params.postId }}
+  <div class="max-w-screen-lg m-auto px-2">
+    <h1 class="text-center text-3xl">
+      {{ post.title  }}
+    </h1>
+    <p>{{ post.body }}</p>
 
-    {{ post.title  }}
   </div>
 </template>
 
