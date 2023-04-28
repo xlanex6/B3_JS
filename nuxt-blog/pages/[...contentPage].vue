@@ -1,12 +1,13 @@
 <template>
   <main class="prose px-4">
-    <ContentDoc />
+    <!-- Markdown parser -->
+    <ContentDoc /> 
+    <!-- Markdown parser end -->
   </main>
 </template>
 
 <script setup>
 definePageMeta({
-  middleware: ["logger"],
   layout: "doc",
 })
 </script>
