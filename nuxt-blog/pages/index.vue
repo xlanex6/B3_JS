@@ -2,6 +2,8 @@
   <div class="bg-deg">
     Home
     <Icon name="material-symbols:remove-shopping-cart-outline-rounded" size="40"/>
+
+    <pre>{{ alex }}</pre>
   </div>
 </template>
 
@@ -40,7 +42,16 @@ const newData = reactive({
 const isMajor = ref(false)
 const myArray = ref([])
 
+const alex = ref(null)
+
 console.log(myArray.value) // []
 console.log(newData.name) // John
+
+async function fetchServer() {
+  const res = await fetch('/api/hello')
+  alex.value = await res.json()
+}
+
+fetchServer()
 
 </script>
