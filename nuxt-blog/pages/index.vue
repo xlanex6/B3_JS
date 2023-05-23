@@ -44,14 +44,18 @@ const myArray = ref([])
 
 const alex = ref(null)
 
-console.log(myArray.value) // []
-console.log(newData.name) // John
+// console.log(myArray.value) // []
+// console.log(newData.name) // John
 
-async function fetchServer() {
-  const res = await fetch('/api/hello')
-  alex.value = await res.json()
-}
+// async function fetchServer() {
+//   const res = await fetch('/api/hello')
+//   alex.value = await res.json()
+// }
 
-fetchServer()
+// fetchServer()
+
+// PWA notification
+// const { $regNotiSw } = useNuxtApp()
+// await $regNotiSw
 
 </script>

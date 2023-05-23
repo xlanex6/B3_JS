@@ -1,22 +1,26 @@
 import { Redis } from '@upstash/redis'
 export default defineEventHandler(async (event) => {
 
-
   const redis = new Redis({
-    url: 'https://eu2-enabling-deer-31654.upstash.io',
-    token: 'myToken',
+    url: process.env.UPSTASH_REDIS_REST_URL,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN,
   })
 
-  const data = await redis.get('foo');
 
-  const query = getQuery(event)
-  const headers = getHeaders(event)
+  // ADD item into `command:aix` set
+  // const data = await redis.sadd('command:cham', 'padXXDE');
+  // DELETE
+  // const data = await redis.srem('command:aix', 'pad004');
+  // GET
+  const data = await redis.smembers('command:cham');
+;
+
+  // const query = getQuery(event)
+  // const headers = getHeaders(event)
 
   return {
     cool: false,
     alex: 'is coding with nuxt',
-    query,
-    data,
-    headers
+    allpad: data,
   }
 })

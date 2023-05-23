@@ -9,16 +9,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@kevinmarrec/nuxt-pwa": "^0.17.0",
-    "@nuxt/content": "^2.6.0",
-    "@nuxtjs/tailwindcss": "^6.6.7",
+    "@nuxthq/ui": "^2.1.0",
     "@types/node": "^18",
     "nuxt": "^3.4.2",
-    "nuxt-icon": "^0.4.0"
-  },
-  "dependencies": {
-    "@tailwindcss/typography": "^0.5.9",
-    "@upstash/redis": "^1.20.4",
-    "web-push": "^3.6.1"
+    "nuxt-icon": "^0.4.1"
   }
 }
