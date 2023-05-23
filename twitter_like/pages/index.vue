@@ -19,7 +19,7 @@ const passwordCookie = useCookie('password')
 function setCookie(cookie) {
   passwordCookie.value = cookie
   navigateTo('/private')
-}˝
+}
 
 onMounted(() => {
   if (routes.query.password === '123soleil') {
