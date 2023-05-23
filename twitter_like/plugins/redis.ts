@@ -9,7 +9,7 @@ export default defineNuxtPlugin(nuxtApp => {
 
   return {
     provide: {
-      redis: redisClient
+      redis: redisClient as Redis
     }
   }
 })
