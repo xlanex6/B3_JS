@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     PASSWORD: process.env.PASSWORD,
     // Config within public will be also exposed to the client
     public: {
-      // apiBase: '/api'
+      TOKEN: process.env.TOKEN,
     }
   },
 })

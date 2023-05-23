@@ -1,19 +1,23 @@
 <template>
-  <h1>PRIVATE</h1>
+
+  <div>
+
+    <h1>PRIVATE</h1>
 
 
+    <NewTweet/>
+
+    <TweetList/>
+    
+    
+  </div>
 
 </template>
 
 <script setup>
+
 definePageMeta({
   middleware: 'protector'
 })
 
-
-//  composant 
-//  input
-//  key ? value= inupt.value 
-//  save dans la DB
-//  verifie la db
 </script>
