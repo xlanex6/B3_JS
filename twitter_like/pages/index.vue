@@ -2,7 +2,7 @@
   <div class="bg-green-200 grid min-h-screen place-content-center">
     <div class="text-center text-gray-400">
     <Icon name="material-symbols:lock" size="60"/>
-    <UInput  appearance="white" size="xl" placeholder="Password" type="password" @keyup.enter="setCookie(passwordInput)" v-model="passwordInput"  />
+    <UInput  appearance="white" size="xl" placeholder="Password" type="password" @keyup.enter="setCookie(passwordInput)" v-model="passwordInput" name="password" />
   </div>
 
   </div>
@@ -22,8 +22,9 @@ function setCookie(cookie) {
 }
 
 onMounted(() => {
-  if (routes.query.password === '123soleil') {
-    setCookie(routes.query.password)
+  const pass = routes.query?.password
+  if (pass === '123soleil') {
+    setCookie(pass)
     navigateTo('/private')
   }
 })
