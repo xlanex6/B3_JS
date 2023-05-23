@@ -1,9 +1,10 @@
 <template>
   <UContainer>
-    <UserSelector @userSelected="setUser"/>
+    <!-- <UserSelector @userSelected="setUser"/> -->
 
     <div class="space-y-2 mt-4">
-      <div class="bg-gray-100 rounded-lg p-2" v-for="tweet in usersTweetsList">{{ tweet }}</div>
+      {{ author }}
+      <div class="bg-gray-100 rounded-lg p-2" v-for="tweet in userTweetsList">{{ tweet }}</div>
     </div>
     
   </UContainer>
@@ -14,21 +15,27 @@
 const nuxtApp = useNuxtApp()
 const { $redis } = nuxtApp
 
-const user = ref('')
-const usersTweetsList = ref([])
+const userTweetsList = ref([])
 
-async function setUser(e) {
-  user.value = e
-}
+const props = defineProps({
+  author: {
+    type: String,
+    required: true
+  }
+})
 
 async function getUserTweet(user) {
   const res = await $redis.smembers(user)
-  usersTweetsList.value = res
+  userTweetsList.value = res
 }
 
-watch(user, () => {
-  getUserTweet(user.value)
+getUserTweet(props.author)
+
+
+watch(props, () => {
+  getUserTweet(props.author)
 })
+
 
 
 </script>
